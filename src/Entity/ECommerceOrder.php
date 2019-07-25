@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Webkul\UVDesk\CoreFrameworkBundle\Entity\Ticket;
 
 /**
+ * @ORM\Table(name="uv_pkg_uvdesk_ecommerce_ticket_order_details")
  * @ORM\Entity(repositoryClass="UVDesk\CommunityPackages\UVDesk\ECommerce\Repository\ECommerceOrderRepository")
  */
 class ECommerceOrder
