@@ -1,0 +1,360 @@
+.uv-app-screen {
+  height: 100%;
+}
+
+/* Loaders */
+
+.shopify-dashboard-loader {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  background: #ffffffba;
+  z-index: 100;
+}
+
+.shopify-dashboard-loader .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.shopify-dashboard-loader .cp-spinner.cp-balls {
+  display: block;
+  margin: 0px auto;
+}
+
+.shopify-dashboard-loader .text {
+  line-height: 1.4em;
+  margin: 20px 0px 0px 0px !important;
+}
+
+/* Shopify Application Dashboard Header */
+
+.uv-app-shopify-header {
+  position: relative;
+  padding-bottom: 20px;
+  border-bottom: solid 1px #D3D3D3;
+}
+
+.uv-app-shopify-header h2 {
+  line-height: 1.4em;
+}
+
+.uv-app-shopify-header ul {
+  margin: unset;
+  padding: unset;
+  list-style: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.uv-app-shopify-header ul li {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Design Fixes */
+
+.uv-app-shopify-header .shopify-button {
+  margin: unset;
+  padding: 3px 8px 4px 8px;
+  line-height: 1.4em;
+  border-radius: 2px;
+}
+
+/* Welcome Screen */
+.welcome-screen.banner {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Shopify Dashboard - Store Listing */
+
+.shopify-store-item {
+  width: 310px;
+  max-width: 100%;
+  font-size: 0;
+  margin: 15px 20px 0px 0px;
+  display: inline-block;
+  border-radius: 3px;
+  border: solid 1px #7C70F4;
+
+  padding: 10px 15px 9px 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.shopify-store-item .shopify-store-item-buttons {
+  padding: unset;
+  margin: 20px 0px 0px 0px;
+}
+
+.shopify-store-item .shopify-store-item-buttons li {
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+}
+
+.shopify-store-item .shopify-store-item-buttons li:last-child {
+  margin-right: unset;
+}
+
+.shopify-store-item .shopify-store-status-flag {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  border-radius: 10px;
+  margin-right: 4px;
+}
+
+.shopify-store-item .shopify-store-status-flag.active {
+  background: #47d04c;
+}
+
+.shopify-store-item .shopify-store-status-flag.inactive {
+  background: #FF5656;
+}
+
+.shopify-store-item .shopify-store-item-buttons button {
+  color: #2750C4;
+  font-size: 14px;
+  line-height: 1.4em;
+  padding: unset;
+  background: unset;
+  border: unset;
+  cursor: pointer;
+}
+
+.shopify-store-item .shopify-store-item-buttons button.delete {
+  color: #FF5656;
+}
+
+/* Form */
+.configure-store-form .form-element {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.configure-store-form .form-element:last-child {
+  margin-bottom: 0px;
+}
+
+.configure-store-form .form-element label {
+  color: #6F6F6F;
+  font-weight: bold;
+  line-height: 1.4em;
+  /* width: 300px; */
+  /* display: inline-block; */
+  /* vertical-align: top; */
+  /* margin-top: 10px; */
+  /* margin-right: 20px; */
+}
+
+.configure-store-form .form-element .form-field {
+  /* display: inline-block; */
+  /* vertical-align: top; */
+  /* margin-top: 20px; */
+}
+
+.configure-store-form .form-element input,
+.configure-store-form .form-element select {
+  width: 300px;
+  margin: unset;
+}
+
+.configure-store-form .form-element .form-field-info {
+  color: #6F6F6F;
+  line-height: 1.4em;
+}
+
+.uv-accordion-container {
+  padding-bottom: 50px;
+  display: grid;
+  grid-row-gap: 25px;
+}
+
+.uv-accordion-container * {
+  font-size: 16px;
+}
+
+.uv-extension-accordion-view {
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.uv-extension-accordion-view button {
+  padding: 0;
+  width: 95%;
+  color: #444;
+  border: none;
+  outline: none;
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: left;
+  transition: 0.4s;
+  padding-bottom: 10px;
+  background: #FFFFFF;
+  display: inline-block;
+}
+
+.uv-accordion-arrow {
+  padding: 3px;
+  cursor: pointer;
+  font-weight: 100;
+  border: solid black;
+  display: inline-block;
+  border-width: 0 2px 2px 0;
+}
+
+.uv-accordion-arrow.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.uv-accordion-arrow.bottom {
+transform: rotate(45deg);
+-webkit-transform: rotate(45deg);
+}
+
+.uv-accordion-description-container {
+  display: none;
+}
+
+.uv-accordion-description-container p {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+.uv-no-channel-content {
+  text-align: center;
+  padding-bottom: 12px;
+  font-weight: 600;
+}
+
+.uv-add-channel-icon:after {
+  margin: 4px;
+  width: 22px;
+  height: 18px;
+  float: right;
+  cursor: pointer;
+  padding-top: 2px;
+  content: ' \002B';
+  text-align: center;
+  border-radius: 100%;
+  background: #FFFFFF;
+  border: 1px solid #000;
+}
+
+.channel-list {
+  padding-bottom: 20px;
+}
+
+.uv-app-list-brick * {
+  font-size: 14px;
+}
+
+.uv-app-list-brick {
+  width: 310px;
+  font-size: 0;
+  max-width: 100%;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 15px 20px 0px 0px;
+  border: solid 1px #7C70F4;
+}
+
+.uv-app-list-brick .uv-app-list-brick-lt {
+  width: 35%;
+  height: 100%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #7C70F4;
+}
+
+.uv-app-list-brick .uv-channel-count {
+  font-size: 24px;
+  color: #FFFFFF;
+  padding: 24px 0px;
+  line-height: 40px;
+  display: inline-block;
+}
+
+.uv-app-list-brick .uv-app-list-brick-rt {
+  width: 65%;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px 15px 9px 15px;
+}
+
+.uv-app-list-brick .uv-app-list-brick-rt p {
+  width: 100%;
+  margin: 0px;
+  margin-bottom: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.uv-app-list-brick .uv-app-list-brick-rt label {
+  margin-bottom: 3px;
+  display: inline-block;
+}
+
+.uv-app-list-brick .uv-app-list-flag-active {
+  color: #FFFFFF;
+  background-color: #2ED04C;
+  display: inline-block;
+  padding: 0px 7px 1px 7px;
+  margin-bottom: 2px;
+  border-radius: 3px;
+}
+
+.uv-app-list-flag-inactive {
+    background-color: #FF5656;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 0px 7px 1px 7px;
+    margin-bottom: 2px;
+    border-radius: 3px;
+}
+
+.uv-app-list-brick .uv-app-list-actions span {
+  cursor: pointer;
+  color: #2750C4;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.uv-app-list-brick .uv-app-list-actions .delete-channel {
+  color: #FF5656;
+}
+
+.uv-app-view-wrapper header {
+    margin-bottom: 30px;
+}
+
+.uv-app-view-wrapper header p {
+  margin: 0px;
+}
+
+.uv-action-buttons input {
+    font-size: 13px;
+}
+
+#uv-channel-view-shopify label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#uv-channel-view-shopify p,
+#uv-channel-view-shopify input {
+  font-size: 12px;
+}

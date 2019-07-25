@@ -1,0 +1,87 @@
+<template id="uvdesk-shopify-create-channel-form-template">
+    <% if (domain != '') { %>
+        <h4>Update <%= domain %>:</h4>
+    <% } else { %>
+        <h4>Integrate a new shopify store:</h4>
+    <% } %>
+
+    <form id="uv-channel-action-form">
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your Shopify Store Name</label>
+            <input name="domain" class="uv-field" type="text" placeholder="example.myshopify.com" value="<%= domain %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your Shopify Api Key</label>
+            <input name="api_key" class="uv-field" type="password" placeholder="" value="<%= api_key %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your Shopify Api Password</label>
+            <input name="api_password" class="uv-field" type="password" placeholder="" value="<%= api_password %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label>
+                <div class="uv-checkbox">
+                    <input type="checkbox" name="is_enabled" checked="checked">
+                    <span class="uv-checkbox-view"></span>
+                </div>
+
+                <span class="uv-checkbox-label">Enable Channel</span>
+            </label>
+        </div>
+
+        <div class="uv-action-buttons">
+            <input type="submit" class="form-field uv-btn" value="Add Store">
+            <input type="button" class="form-field uv-btn cancel" value="Cancel">
+        </div>
+    </form>
+</template>
+
+<template id="uvdesk-shopify-channel-listing-template">
+    <div class="listing" style="margin-bottom: 20px;">
+        <% if (collection.length > 0) { %>
+            <% _.each(collection, function(channel, index) { %>
+                <div data-id="<%= channel.id %>" class="uv-app-list-brick" style="margin-top: unset;">
+                    <div class="uv-app-list-brick-lt"><span class="uv-channel-count">#<%= index + 1 %></span></div>
+
+                    <div class="uv-app-list-brick-rt">
+                        <label><%= channel.name %></label>
+                        <p><span class="uv-app-list-flag-<%= channel.enabled ? 'active': 'inactive' %>"><%= channel.enabled ? 'Active' : 'Inactive' %></span></p>
+
+                        <div class="uv-app-list-actions">
+                            <span class="edit-channel">Edit</span>
+                            <span class="uv-delete delete-channel">Delete</span>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No channels have been added.</p>
+        <% } %>
+    </div>
+
+    <div class="triggers">
+        <button id="pta-add-shopify-store" class="uv-btn" style="margin: unset;">Add Shopify Store</button>
+    </div>
+</template>
+
+<template id="uvdesk-shopify-template">
+    <div class="uv-ecommerce-platform shopify">
+        <div class="platform-head" style="margin-bottom: 20px;">
+            <h4 style="text-decoration: underline; line-height: 1.4em; font-size: 16px;"><%= platform.title %></h4>
+        </div>
+
+        <div id="uvdesk-shopify-collection" class="platform-collection"></div>
+    </div>
+</template>
+
+<template id="app-template">
+    <header style="border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;">
+        <h1 style="line-height: 1.4em; margin-bottom: 10px;">Order Syncronization</h1>
+        <p style="line-height: 1.4em;">Easily integrate different ecommerce platforms with your helpdesk which can then be later used to swiftly integrate ecommerce order details with your support tickets.</p>
+    </header>
+
+    <div class="ecommerce-platforms"></div>
+</template>

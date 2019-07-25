@@ -1,0 +1,11 @@
+akshay_shopify_ecommerce_private:
+    path:     test
+    controller: UVDesk\CommunityPackages\UVDesk\ECommerce\Controller\Test::private
+
+uvdesk_ecommerce_integrate_ticket_order_details:
+    path:     /api/integrate-orders/{ticketId}
+    # controller: Webkul\UVDesk\ExtensionFrameworkBundle\Controller\ECommerce::fetchOrderDetails
+    controller: UVDesk\CommunityPackages\UVDesk\ECommerce\Controller\ECommerceOrders::integrateOrders
+    # methods: [POST,PUT]
+    # requirements:
+    #     ticketId: '\d+'
