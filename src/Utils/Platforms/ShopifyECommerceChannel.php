@@ -3,7 +3,7 @@
 namespace UVDesk\CommunityPackages\UVDesk\ECommerce\Utils\Platforms;
 
 use UVDesk\CommunityPackages\UVDesk\ECommerce\Utils\ECommerceChannelInterface;
-use UVDesk\CommunityPackages\UVDesk\ECommerce\Utils\Api\Admin\StoreProperties\Shop;
+use UVDesk\CommunityPackages\UVDesk\ECommerce\Utils\Platforms\Shopify\Api\Shop;
 
 class ShopifyECommerceChannel implements ECommerceChannelInterface
 {
