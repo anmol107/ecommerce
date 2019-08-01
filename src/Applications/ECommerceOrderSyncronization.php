@@ -2,17 +2,17 @@
 
 namespace UVDesk\CommunityPackages\UVDesk\ECommerce\Applications;
 
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Application\Routine\ApiRoutine;
 use UVDesk\CommunityPackages\UVDesk\ECommerce\Utils\ECommerceConfiguration;
+use Symfony\Bundle\FrameworkBundle\Console\Application as ConsoleApplication;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Definition\Application\Application;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Application\Routine\RenderDashboardRoutine;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Definition\Application\ApplicationMetadata;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Definition\Application\ApplicationInterface;
-use Symfony\Bundle\FrameworkBundle\Console\Application as ConsoleApplication;
-use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\NullOutput;
 
 class ECommerceOrderSyncronization extends Application implements ApplicationInterface, EventSubscriberInterface
 {

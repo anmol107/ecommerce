@@ -59,7 +59,7 @@ SVG;
 
         $ticketId = $request->get('ticketId');
         $ticket = $this->entityManager->getRepository('UVDeskCoreFrameworkBundle:Ticket')->findOneById($ticketId);
-        $eCommerceOrders = $this->entityManager->getRepository('UVDeskECommercePackage:ECommerceOrder')->findByTicket($ticket);
+        $eCommerceOrders = $this->entityManager->getRepository('UVDeskECommercePackage:ECommerceOrderDetails')->findByTicket($ticket);
 
         return $this->twig->render('@_uvdesk_extension_uvdesk_ecommerce/widgets/ecommerce-orders/widget.html.twig', [
             'id' => $request->get('ticketId'),

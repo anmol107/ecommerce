@@ -7,9 +7,9 @@ use Webkul\UVDesk\CoreFrameworkBundle\Entity\Ticket;
 
 /**
  * @ORM\Table(name="uv_pkg_uvdesk_ecommerce_ticket_order_details")
- * @ORM\Entity(repositoryClass="UVDesk\CommunityPackages\UVDesk\ECommerce\Repository\ECommerceOrderRepository")
+ * @ORM\Entity(repositoryClass="UVDesk\CommunityPackages\UVDesk\ECommerce\Repository\ECommerceOrderDetailsRepository")
  */
-class ECommerceOrder
+class ECommerceOrderDetails
 {
     /**
      * @ORM\Id()
@@ -30,7 +30,7 @@ class ECommerceOrder
 
     /**
      * @ORM\ManyToOne(targetEntity="Webkul\UVDesk\CoreFrameworkBundle\Entity\Ticket")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $ticket;
 

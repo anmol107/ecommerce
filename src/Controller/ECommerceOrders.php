@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use UVDesk\CommunityPackages\UVDesk\ECommerce\Entity\ECommerceOrder;
+use UVDesk\CommunityPackages\UVDesk\ECommerce\Entity\ECommerceOrderDetails;
 use UVDesk\CommunityPackages\UVDesk\ECommerce\Utils\ECommerceConfiguration;
 
 class ECommerceOrders extends Controller
@@ -18,21 +18,27 @@ class ECommerceOrders extends Controller
         $eCommercePlatform = $eCommerceConfiguration->getECommercePlatformByQualifiedName($params['platform']);
 
         if (empty($eCommercePlatform)) {
-            dump('platform not found');
-            die;
+            return new JsonResponse([
+                'success' => false,
+                'alertClass' => 'error',
+                'alertMessage' => 'Unable to retrieve channel details.',
+            ], 404);
         } else {
             $eCommerceChannel = $eCommercePlatform->getECommerceChannel($params['channelId']);
 
             if (empty($eCommerceChannel)) {
-                dump('channel not found');
-                die;
+                return new JsonResponse([
+                    'success' => false,
+                    'alertClass' => 'error',
+                    'alertMessage' => 'Unable to retrieve channel details.',
+                ], 404);
             }
         }
 
         $eCommerceOrderDetails = $eCommerceChannel->fetchECommerceOrderDetails((array) $params['orderId']);
         
         $ticketRepository = $entityManager->getRepository('UVDeskCoreFrameworkBundle:Ticket');
-        $eCommerceOrderRepository = $entityManager->getRepository('UVDeskECommercePackage:ECommerceOrder');
+        $eCommerceOrderRepository = $entityManager->getRepository('UVDeskECommercePackage:ECommerceOrderDetails');
 
         $ticket = $ticketRepository->findOneById($ticketId);
 
@@ -43,7 +49,7 @@ class ECommerceOrders extends Controller
         //     $orderExistsFlag = 1;
         // }
 
-        $ecommerceOrder = new ECommerceOrder();
+        $ecommerceOrder = new ECommerceOrderDetails();
 
         // Set ECom. Order Details
         $ecommerceOrder->setTicket($ticket);
@@ -63,12 +69,5 @@ class ECommerceOrders extends Controller
         ];
 
         return new JsonResponse($response);
-    }
-
-    public function public(Request $request)
-    {
-        dump('public');
-        dump($request);
-        die;
     }
 }
