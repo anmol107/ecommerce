@@ -2,17 +2,17 @@
 
 namespace UVDesk\CommunityPackages\UVDesk\ECommerce\Applications;
 
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\NullOutput;
-use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Application\Routine\ApiRoutine;
 use UVDesk\CommunityPackages\UVDesk\ECommerce\Utils\ECommerceConfiguration;
-use Symfony\Bundle\FrameworkBundle\Console\Application as ConsoleApplication;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Definition\Application\Application;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Application\Routine\RenderDashboardRoutine;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Definition\Application\ApplicationMetadata;
 use Webkul\UVDesk\ExtensionFrameworkBundle\Definition\Application\ApplicationInterface;
+use Symfony\Bundle\FrameworkBundle\Console\Application as ConsoleApplication;
+use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\NullOutput;
 
 class ECommerceOrderSyncronization extends Application implements ApplicationInterface, EventSubscriberInterface
 {
@@ -62,21 +62,57 @@ class ECommerceOrderSyncronization extends Application implements ApplicationInt
         switch ($request->query->get('endpoint')) {
             case 'get-stores':
                 $response = ['platforms' => []];
-
+               
                 foreach ($this->eCommerceConfiguration->getECommercePlatforms() as $eCommercePlatform) {
                     $response['platforms'][$eCommercePlatform->getQualifiedName()] = [
                         'title' => $eCommercePlatform->getName(),
                         'description' => $eCommercePlatform->getDescription(),
-                        'channels' => array_map(function ($eCommerceChannel) {
-                            return [
-                                'id' => $eCommerceChannel->getId(),
-                                'name' => $eCommerceChannel->getName(),
-                                'domain' => $eCommerceChannel->getDomain(),
-                                'apiKey' => $eCommerceChannel->getClient(),
-                                'apiPassword' => $eCommerceChannel->getPassword(),
-                                'enabled' => $eCommerceChannel->getIsEnabled(),
-                            ];
-                        }, $eCommercePlatform->getECommerceChannelCollection()),
+                        // 'channels' => array_map(function ($eCommerceChannel)  {
+                        'channels' => array_map(function ($eCommerceChannel) use (&$eCommercePlatform) {
+
+                            switch($eCommercePlatform->getQualifiedName()){
+                            
+                                case 'shopify':
+                                    return [
+                                        'id' => $eCommerceChannel->getId(),
+                                        'name' => $eCommerceChannel->getName(),
+                                        'domain' => $eCommerceChannel->getDomain(),
+                                        'apiKey' => $eCommerceChannel->getClient(),
+                                        'apiPassword' => $eCommerceChannel->getPassword(),
+                                        'enabled' => $eCommerceChannel->getIsEnabled()
+                                    ];
+                                break;
+    
+                                case 'bigcommerce': 
+                                    return [
+                                            'id' => $eCommerceChannel->getId(),
+                                            'domain' => $eCommerceChannel->getDomain(),
+                                            'store_hash' => $eCommerceChannel->getStoreHash(),
+                                            'api_client_id' => $eCommerceChannel->getApiClientId(),
+                                            'api_token' => $eCommerceChannel->getApiToken(),
+                                            'is_enabled' => $eCommerceChannel->getIsEnabled()
+                                    ];
+                                break;
+
+                                case 'magento':
+                                    return [
+                                        'id' => $eCommerceChannel->getId(),
+                                        'domain' => $eCommerceChannel->getDomain(),
+                                        'api_username' => $eCommerceChannel->getApiUsername(),
+                                        'api_password' => $eCommerceChannel->getApiPassword(),
+                                        'is_enabled' => $eCommerceChannel->getIsEnabled()
+                                    ];
+                                break;
+
+                                case 'opencart':
+                                    return [
+                                        'id' => $eCommerceChannel->getId(),
+                                        'domain' => $eCommerceChannel->getDomain(),
+                                        'api_key' => $eCommerceChannel->getApiKey(),
+                                    ];
+                                break;
+
+                        }}, $eCommercePlatform->getECommerceChannelCollection())
                     ];
                 }
 
@@ -86,14 +122,15 @@ class ECommerceOrderSyncronization extends Application implements ApplicationInt
                 // get request params
                 $attributes = json_decode($request->getContent(), true);
                 $attributes = !$attributes ? $request->request->all() : $attributes;
-
-                // get platform id
+               dump("inside order-sync: attributes: "); dump($attributes); 
                 $platform = $attributes['platform'];
                 $eCommercePlatform = $this->eCommerceConfiguration->getECommercePlatformByQualifiedName($platform);
 
                 if (!empty($eCommercePlatform)) {
                     try {
                         if ('POST' == $request->getMethod()) {
+                            dump("inside ord sync: POST");
+                            dump($attributes);
                             $channel = $eCommercePlatform->createECommerceChannel($attributes);
                         } else if ('PUT' == $request->getMethod()) {
                             $channel = $eCommercePlatform->updateECommerceChannel($attributes);
@@ -127,9 +164,7 @@ class ECommerceOrderSyncronization extends Application implements ApplicationInt
                 // get platform id
                 $platformId = array_keys($attributes)[0];
                 $attributes = $attributes[$platformId];
-
                 $eCommercePlatform = $this->eCommerceConfiguration->getECommercePlatformByQualifiedName('shopify');
-
                 $channel = $eCommercePlatform->removeECommerceChannel($attributes);
                 $this->getPackage()->updatePackageConfiguration((string) $this->eCommerceConfiguration);
 

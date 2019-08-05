@@ -1,8 +1,9 @@
 <template id="uvdesk-shopify-create-channel-form-template">
+{# SHOPIFY CREATE CHANNEL FORM TEMPLATE #}
     <% if (domain != '') { %>
         <h4>Update <%= domain %>:</h4>
     <% } else { %>
-        <h4>Integrate a new shopify store:</h4>
+        <h4>Integrate a new Shopify store:</h4>
     <% } %>
 
     <form id="uv-channel-action-form">
@@ -33,13 +34,145 @@
         </div>
 
         <div class="uv-action-buttons">
-            <input type="submit" class="form-field uv-btn" value="Add Store">
-            <input type="button" class="form-field uv-btn cancel" value="Cancel">
+            <input type="submit" class="form-field uv-btn shopify-submit" value="Add Store">
+            <input type="button" class="form-field uv-btn shopify-cancel" value="Cancel">
         </div>
     </form>
 </template>
 
+<template id="uvdesk-opencart-create-channel-form-template">
+{# OPENCART CREATE CHANNEL FORM TEMPLATE#}
+    <% if (domain != '') { %>
+        <h4>Update <%= domain %>:</h4>
+    <% } else { %>
+        <h4>Integrate a new OpenCart store:</h4>
+    <% } %>
+
+    <form id="uv-channel-action-form">
+         <div class="uv-element-block">
+            <label class="uv-field-label">Your OpenCart Domain</label>
+            <input name="domain" class="uv-field" type="text" placeholder="example.{your-opencart-domain}.com" value="<%= domain %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your OpenCart Api Key</label>
+            <input name="api_key" class="uv-field"  type="text"  maxlength="256" value="<%= api_key %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label>
+                <div class="uv-checkbox">
+                    <input type="checkbox" name="is_enabled" checked="checked" >
+                    <span class="uv-checkbox-view"></span>
+                </div>
+
+                <span class="uv-checkbox-label">Enable Channel</span>
+            </label>
+        </div>
+
+        <div class="uv-action-buttons">
+            <input type="submit" class="form-field uv-btn opencart-submit" value="Add Store">
+            <input type="button" class="form-field uv-btn opencart-cancel" value="Cancel">
+        </div>
+    </form>
+</template>
+
+
+
+<template id="uvdesk-bigcommerce-create-channel-form-template">
+{# BIG COMMERCE CREATE CHANNEL FORM TEMPLATE#}
+    <% if (domain != '') { %>
+        <h4>Update <%= domain %>:</h4>
+    <% } else { %>
+        <h4>Integrate a new BigCommerce store:</h4>
+    <% } %>
+
+    <form id="uv-channel-action-form">
+         <div class="uv-element-block">
+            <label class="uv-field-label">Your BigCommerce Store Name</label>
+            <input name="domain" class="uv-field" type="text" placeholder="example.bigcommerce.com" value="<%= domain %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your BigCommerce Store Hash</label>
+            <input name="store_hash" class="uv-field" type="text"  value="<%= store_hash %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your BigCommerce Api Token</label>
+            <input name="api_token" class="uv-field"  type="text" value="<%= api_token %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your BigCommerce Api Client ID</label>
+            <input name="api_client_id" class="uv-field" type="text" placeholder="" value="<%= api_client_id %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label>
+                <div class="uv-checkbox">
+                    <input type="checkbox" name="is_enabled" checked="checked" >
+                    <span class="uv-checkbox-view"></span>
+                </div>
+
+                <span class="uv-checkbox-label">Enable Channel</span>
+            </label>
+        </div>
+
+        <div class="uv-action-buttons">
+            <input type="submit" class="form-field uv-btn bigcommerce-submit" value="Add Store">
+            <input type="button" class="form-field uv-btn bigcommerce-cancel" value="Cancel">
+        </div>
+    </form>
+</template>
+
+<template id="uvdesk-magento-create-channel-form-template">
+{# MAGENTO CREATE CHANNEL FORM TEMPLATE #}
+    <% if (domain != '') { %>
+        <h4>Update <%= domain %>:</h4>
+    <% } else { %>
+        <h4>Integrate a new Magento store:</h4>
+    <% } %>
+
+    <form id="uv-channel-action-form">
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your Magento Domain Name</label>
+            <input name="domain" class="uv-field" type="text" placeholder="http://www.{your-magento-domain-name}.com" value="<%= domain %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your Magento Api Username</label>
+            <input name="api_username" class="uv-field" type="text" placeholder="" value="<%= api_username %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label class="uv-field-label">Your Magento Api Password</label>
+            <input name="api_password" class="uv-field" type="text" placeholder="" value="<%= api_password %>">
+        </div>
+
+        <div class="uv-element-block">
+            <label>
+                <div class="uv-checkbox">
+                    <input type="checkbox" name="is_enabled" checked="checked">
+                    <span class="uv-checkbox-view"></span>
+                </div>
+
+                <span class="uv-checkbox-label">Enable Channel</span>
+            </label>
+        </div>
+
+        <div class="uv-action-buttons">
+            <input type="submit" class="form-field uv-btn magento-submit" value="Add Store">
+            <input type="button" class="form-field uv-btn magento-cancel" value="Cancel">
+        </div>
+    </form>
+</template>
+
+
+
+
 <template id="uvdesk-shopify-channel-listing-template">
+{# SHOPIFY CHANNEL LISTING TEMPLATE #}
     <div class="listing" style="margin-bottom: 20px;">
         <% if (collection.length > 0) { %>
             <% _.each(collection, function(channel, index) { %>
@@ -67,6 +200,96 @@
     </div>
 </template>
 
+
+<template id="uvdesk-opencart-channel-listing-template">
+{# OPENCART CHANNEL LISTING TEMPLATE #}
+    <div class="listing" style="margin-bottom: 20px;">
+        <% if (collection.length > 0) { %>
+            <% _.each(collection, function(channel, index) { %>
+                <div data-id="<%= channel.id %>" class="uv-app-list-brick" style="margin-top: unset;">
+                    <div class="uv-app-list-brick-lt"><span class="uv-channel-count">#<%= index + 1 %></span></div>
+
+                    <div class="uv-app-list-brick-rt">
+                        <label><%= channel.name %></label>
+                        <p><span class="uv-app-list-flag-<%= channel.enabled ? 'active': 'inactive' %>"><%= channel.enabled ? 'Active' : 'Inactive' %></span></p>
+
+                        <div class="uv-app-list-actions">
+                            <span class="edit-channel">Edit</span>
+                            <span class="uv-delete delete-channel">Delete</span>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No channels have been added.</p>
+        <% } %>
+    </div>
+
+    <div class="triggers">
+        <button id="pta-add-opencart-store" class="uv-btn" style="margin: unset;">Add OpenCart Store</button>
+    </div>
+</template>
+
+
+
+<template id="uvdesk-bigcommerce-channel-listing-template">
+{# BIG COMMERCE CHANNEL LISTING TEMPLATE #}
+    <div class="listing" style="margin-bottom: 20px;">
+        <% if (collection.length > 0) { %>
+            <% _.each(collection, function(channel, index) { %>
+                <div data-id="<%= channel.id %>" class="uv-app-list-brick" style="margin-top: unset;">
+                    <div class="uv-app-list-brick-lt"><span class="uv-channel-count">#<%= index + 1 %></span></div>
+
+                    <div class="uv-app-list-brick-rt">
+                        <label><%= channel.name %></label>
+                        <p><span class="uv-app-list-flag-<%= channel.enabled ? 'active': 'inactive' %>"><%= channel.enabled ? 'Active' : 'Inactive' %></span></p>
+
+                        <div class="uv-app-list-actions">
+                            <span class="edit-channel">Edit</span>
+                            <span class="uv-delete delete-channel">Delete</span>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No channels have been added.</p>
+        <% } %>
+    </div>
+
+    <div class="triggers">
+        <button id="pta-add-bigcommerce-store" class="uv-btn" style="margin: unset;">Add BigCommerce Store</button>
+    </div>
+</template>
+
+<template id="uvdesk-magento-channel-listing-template">
+{# MAGENTO CHANNEL LISTING TEMPLATE #}
+    <div class="listing" style="margin-bottom: 20px;">
+        <% if (collection.length > 0) { %>
+            <% _.each(collection, function(channel, index) { %>
+                <div data-id="<%= channel.id %>" class="uv-app-list-brick" style="margin-top: unset;">
+                    <div class="uv-app-list-brick-lt"><span class="uv-channel-count">#<%= index + 1 %></span></div>
+
+                    <div class="uv-app-list-brick-rt">
+                        <label><%= channel.name %></label>
+                        <p><span class="uv-app-list-flag-<%= channel.enabled ? 'active': 'inactive' %>"><%= channel.enabled ? 'Active' : 'Inactive' %></span></p>
+
+                        <div class="uv-app-list-actions">
+                            <span class="edit-channel">Edit</span>
+                            <span class="uv-delete delete-channel">Delete</span>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No channels have been added.</p>
+        <% } %>
+    </div>
+
+    <div class="triggers">
+        <button id="pta-add-magento-store" class="uv-btn" style="margin: unset;">Add Magento Store</button>
+    </div>
+</template>
+
 <template id="uvdesk-shopify-template">
     <div class="uv-ecommerce-platform shopify">
         <div class="platform-head" style="margin-bottom: 20px;">
@@ -74,6 +297,42 @@
         </div>
 
         <div id="uvdesk-shopify-collection" class="platform-collection"></div>
+    </div>
+</template>
+
+<template id="uvdesk-opencart-template">
+{# OPENCART TEMPLATE #}
+    <div class="uv-ecommerce-platform opencart">
+        <div class="platform-head" style="margin-bottom: 20px;">
+            <h4 style="text-decoration: underline; line-height: 1.4em; font-size: 16px;"><%= platform.title %></h4>
+        </div>
+
+        <div id="uvdesk-opencart-collection" class="platform-collection"></div>
+    </div>
+</template>
+
+
+
+
+<template id="uvdesk-bigcommerce-template">
+{# BIG COMMERCE TEMPLATE #}
+    <div class="uv-ecommerce-platform bigcommerce">
+        <div class="platform-head" style="margin-bottom: 20px;">
+            <h4 style="text-decoration: underline; line-height: 1.4em; font-size: 16px;"><%= platform.title %></h4>
+        </div>
+
+        <div id="uvdesk-bigcommerce-collection" class="platform-collection"></div>
+    </div>
+</template>
+
+<template id="uvdesk-magento-template">
+{# MAGENTO TEMPLATE #}
+    <div class="uv-ecommerce-platform magento">
+        <div class="platform-head" style="margin-bottom: 20px;">
+            <h4 style="text-decoration: underline; line-height: 1.4em; font-size: 16px;"><%= platform.title %></h4>
+        </div>
+
+        <div id="uvdesk-magento-collection" class="platform-collection"></div>
     </div>
 </template>
 
